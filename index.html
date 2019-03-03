@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<main class="geocodeit">
+
+    <div class="geocodeit__input">
+        <textarea class="js-input"></textarea>
+    </div>
+
+    <div class="geocodeit__activity">
+        <label for="apikey">MapIt API Key</label>
+        <input type="text" class="js-apikey geocodeit__activity__apikey" id="apikey">
+        <button class="js-start geocodeit__activity__start">Start</button>
+        <button class="js-stop geocodeit__activity__stop">Stop</button>
+        <progress class="js-progress geocodeit__activity__progress" value="0"></progress>
+    </div>
+
+    <div class="geocodeit__output">
+        <textarea class="js-output" readonly="readonly"></textarea>
+    </div>
+
+</main>

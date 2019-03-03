@@ -1,0 +1,124 @@
+@import "variables";
+@import "mixins";
+
+@import "reboot-defaults";
+@import "reboot";
+
+html, body {
+    height: 100%;
+}
+
+.geocodeit {
+    height: 100%;
+    @include display-flex;
+    @include flex-direction(column);
+}
+
+.geocodeit__input,
+.geocodeit__output {
+    @include flex(1 1 auto);
+
+    textarea {
+        display: block;
+        border: none;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        resize: none;
+
+        &:focus {
+            box-shadow: inset 0 0 0 2px $color-bright-blue;
+            background: mix($color-bright-blue, #fff, 3%);
+        }
+
+        &:disabled {
+            background: #fff;
+            color: $color-grey-5;
+        }
+    }
+}
+
+.geocodeit__activity {
+    background: $color-grey-2;
+    padding: 1em 0.5em;
+    @include display-flex;
+    @include align-items(center);
+    @include flex-wrap(wrap);
+
+    & > * {
+        margin: 0 0.5em;
+    }
+
+    label {
+        margin-right: 0;
+    }
+}
+
+.geocodeit__activity__apikey {
+    padding: 0.2em 0.3em;
+    border: 1px solid $color-grey-3;
+    font-family: monospace;
+
+    &:focus {
+        box-shadow: inset 0 0 0 1px $color-bright-blue;
+        background: mix($color-bright-blue, #fff, 3%);
+        border: 1px solid $color-bright-blue;
+    }
+
+    &:disabled {
+        background: #fff;
+        color: $color-grey-5;
+    }
+}
+
+.geocodeit__activity__apikey,
+.geocodeit__activity__start,
+.geocodeit__activity__stop {
+    align-self: stretch;
+}
+
+.geocodeit__activity__start,
+.geocodeit__activity__stop {
+    padding: 0.2em 1em;
+    border: none;
+    border-radius: 0.2em;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $color-bright-blue, inset 0 0 0 1px $color-grey-2;
+    }
+}
+
+.geocodeit__activity__start {
+    background-color: $color-dark-green;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+        background-color: $color-bright-green;
+    }
+
+    &:disabled {
+        background-color: $color-grey-3;
+        color: $color-grey-1;
+    }
+}
+
+.geocodeit__activity__stop {
+    background-color: $color-dark-red;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+        background-color: $color-bright-red;
+    }
+
+    &:disabled {
+        background-color: $color-grey-3;
+        color: $color-grey-1;
+    }
+}
+
+.geocodeit__activity__progress {
+    @include flex(1 1 auto);
+}

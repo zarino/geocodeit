@@ -1,0 +1,31 @@
+$black: #000 !default !default;
+$grey: #777 !default;
+$white: #fff !default;
+$blue: #0366d6 !default;
+
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+$body-bg: $white !default;
+$body-color: $black !default;
+
+$link-color: $blue !default;
+$link-hover-color: darken($link-color, 10%) !default;
+$link-decoration: none !default;
+$link-hover-decoration: underline !default;
+
+$font-family-base: $font-family-sans-serif !default;
+$font-size-base: 16px !default;
+$line-height-base: 1.375 !default;
+$font-weight-base: normal !default;
+
+$headings-margin-bottom: 0.5rem !default;
+$paragraph-margin-bottom: 1rem !default;
+$label-margin-bottom: 0.5rem !default;
+
+$table-cell-padding: 0.75rem !default;
+$table-caption-color: $grey !default;
+
+$dt-font-weight: $font-weight-bold !default;

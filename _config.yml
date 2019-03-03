@@ -1,7 +1,8 @@
-title: TODO
+title: geocodeit
 description: >
-  TODO
-baseurl: ""
+  Simple web frontend for geocoding UK postcodes using
+  mySociety’s MapIt service (mapit.mysociety.org)
+baseurl: "/geocodeit"
 
 markdown: kramdown
 host: 0.0.0.0

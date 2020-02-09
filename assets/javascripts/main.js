@@ -61,8 +61,11 @@ var Geocoder = function(options) {
             ajaxCache = JSON.parse( ajaxCache );
         }
 
-        if ( ajaxCache.hasOwnProperty(cleanedPostcode) ) {
-            // Return cached result immediately (no need to rate limit).
+        if ( cleanedPostcode === '' ) {
+            // Return an empty string if an empty string was passed in.
+            dfd.resolve( [''] );
+        } else if ( ajaxCache.hasOwnProperty(cleanedPostcode) ) {
+            // Return cached result if it exists (no need to rate limit).
             dfd.resolve( ajaxCache[cleanedPostcode] );
         } else {
             $.ajax({

@@ -38,7 +38,7 @@ var Geocoder = function(options) {
                 outputData
             ).always(function(){
                 i += 1;
-                if ( i < n ){
+                if ( i < n && isRunning ){
                     geocodeNextPostcode();
                 } else {
                     root.stop();
@@ -46,7 +46,9 @@ var Geocoder = function(options) {
             });
         };
 
-        geocodeNextPostcode();
+        if ( isRunning ) {
+            geocodeNextPostcode();
+        }
     };
 
     var getPostcodeResult = function(postcode, apikey){

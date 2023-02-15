@@ -1,0 +1,2 @@
+<input class="form-check-input {{ include.input_classes }}" type="checkbox" value="{{ include.value }}" id="{{ include.id }}" {% if include.checked %}checked{% endif %} {% if include.disabled %}disabled{% endif %}>
+<label class="form-check-label {{ include.label_classes }}" for="{{ include.id }}">{{ include.label }}</label>

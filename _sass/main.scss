@@ -6,13 +6,16 @@
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+
+@import "utilities";
+
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
-// @import "bootstrap/scss/tables";
+@import "bootstrap/scss/tables";
 @import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 // @import "bootstrap/scss/transitions";
@@ -46,14 +49,66 @@ html, body {
 
 .geocodeit {
     height: 100%;
+
+    @include media-breakpoint-up(sm) {
+        display: grid;
+        grid-template-columns: minmax(300px, 400px) minmax(50%, auto);
+        grid-template-rows: 1fr min-content 1fr;
+    }
+}
+
+.geocodeit__settings {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+
+    border-bottom: $border-width $border-style $border-color;
+    padding: 1rem 1rem 0 1rem;
+    background: $gray-100;
+
+    @include media-breakpoint-up(sm) {
+        border-bottom: 0;
+        border-right: $border-width $border-style $border-color;
+        overflow: auto;
+    }
+
+    & > :last-child {
+        position: sticky;
+        bottom: 0;
+        padding: 1rem;
+        background: $gray-100;
+        margin: 0 -1rem;
+    }
+}
+
+.geocodeit__input {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.geocodeit__activity {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    border-top: $border-width $border-style $border-color;
+    border-bottom: $border-width $border-style $border-color;
+    padding: 1rem;
+    background: $gray-100;
+
     display: flex;
-    flex-direction: column;
+
+    progress {
+        flex: 1 1 auto;
+    }
+}
+
+.geocodeit__output {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    overflow: auto;
 }
 
 .geocodeit__input,
 .geocodeit__output {
-    flex: 1 1 auto;
-
     textarea {
         display: block;
         border: none;
@@ -61,100 +116,54 @@ html, body {
         height: 100%;
         padding: 1em;
         resize: none;
+        min-height: 10em;
+
+        @include media-breakpoint-up(sm) {
+            min-height: 0;
+        }
 
         &:focus {
-            box-shadow: inset 0 0 0 2px $color-bright-blue;
-            background: mix($color-bright-blue, #fff, 3%);
+            box-shadow: inset 0 0 0 2px $blue;
+            background: mix($blue, #fff, 3%);
+            outline: none;
         }
 
         &:disabled {
             background: #fff;
-            color: $color-grey-5;
+            color: $gray-500;
         }
     }
 }
 
-.geocodeit__activity {
-    background: $color-grey-2;
-    padding: 1em 0.5em;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    & > * {
-        margin: 0 0.5em;
-    }
-
-    label {
-        margin-right: 0;
+.geocodeit__settings {
+    .btn {
+        --#{$prefix}btn-disabled-color: #{$gray-200};
+        --#{$prefix}btn-disabled-bg: #{$gray-500};
+        --#{$prefix}btn-disabled-border-color: #{$gray-500};
     }
 }
 
-.geocodeit__activity__apikey {
-    padding: 0.2em 0.3em;
-    border: 1px solid $color-grey-3;
-    font-family: monospace;
-
-    &:focus {
-        box-shadow: inset 0 0 0 1px $color-bright-blue;
-        background: mix($color-bright-blue, #fff, 3%);
-        border: 1px solid $color-bright-blue;
-    }
-
-    &:disabled {
-        background: #fff;
-        color: $color-grey-5;
+.geocodeit__output table {
+    thead {
+        position: sticky;
+        top: 0;
+        background: rgba(#fff, 0.7);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 1px 1px var(--bs-table-border-color);
     }
 }
 
-.geocodeit__activity__apikey,
-.geocodeit__activity__start,
-.geocodeit__activity__stop {
-    align-self: stretch;
-}
+.column-explanations {
+    display: none;
+    grid-template-columns: min-content auto;
+    grid-gap: 0 0.5em;
+    margin-bottom: 0;
 
-.geocodeit__activity__start,
-.geocodeit__activity__stop {
-    padding: 0.2em 1em;
-    border: none;
-    border-radius: 0.2em;
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px $color-bright-blue, inset 0 0 0 1px $color-grey-2;
-    }
-}
-
-.geocodeit__activity__start {
-    background-color: $color-dark-green;
-    color: #fff;
-
-    &:hover,
-    &:focus {
-        background-color: $color-bright-green;
+    input:checked ~ & {
+        display: grid;
     }
 
-    &:disabled {
-        background-color: $color-grey-3;
-        color: $color-grey-1;
+    dd {
+        margin-bottom: 0;
     }
-}
-
-.geocodeit__activity__stop {
-    background-color: $color-dark-red;
-    color: #fff;
-
-    &:hover,
-    &:focus {
-        background-color: $color-bright-red;
-    }
-
-    &:disabled {
-        background-color: $color-grey-3;
-        color: $color-grey-1;
-    }
-}
-
-.geocodeit__activity__progress {
-    flex: 1 1 auto;
 }

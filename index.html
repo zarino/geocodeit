@@ -3,20 +3,121 @@ layout: default
 ---
 <main class="geocodeit">
 
+    <div class="geocodeit__settings js-settings">
+        <div class="mb-4">
+            <label for="apikey" class="form-label">MapIt API Key</label>
+            <input type="text" class="form-control font-monospace" id="apikey">
+        </div>
+        <fieldset class="mb-4">
+            <legend class="form-label fs-6">Output format</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="outputFormat" id="outputFormat_text" checked>
+                <label class="form-check-label" for="outputFormat_text">Tab-separated values</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="outputFormat" id="outputFormat_table">
+                <label class="form-check-label" for="outputFormat_table">HTML table</label>
+              </div>
+              <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" name="outputHeaders" id="outputHeaders">
+                <label class="form-check-label" for="outputHeaders">Include column headers</label>
+              </div>
+        </fieldset>
+        <fieldset class="mb-2">
+            <legend class="form-label fs-6">Output columns</legend>
+            <div class="form-check mb-2">
+                {% include form-check-inner.html label="Postcode" id="postcode" checked=1 disabled=1 %}
+                <dl class="text-muted fs-8 column-explanations">
+                    <dt>postcode</dt>
+                    <dd>Postcode</dd>
+                </dl>
+            </div>
+            <div class="form-check mb-2">
+                {% include form-check-inner.html label="Latitude &amp; longitude" id="latlon" checked=1 %}
+                <dl class="text-muted fs-8 column-explanations">
+                    <dt>wgs84_lat</dt>
+                    <dd>Latitude</dd>
+                    <dt>wgs84_lon</dt>
+                    <dd>Longitude</dd>
+                </dl>
+            </div>
+            <div class="form-check mb-2">
+                {% include form-check-inner.html label="Ordnance Survey grid coordinates" id="os" %}
+                <dl class="text-muted fs-8 column-explanations">
+                    <dt>northing</dt>
+                    <dd>Northing</dd>
+                    <dt>easting</dt>
+                    <dd>Easting</dd>
+                </dl>
+            </div>
+            <div class="form-check mb-2">
+                {% include form-check-inner.html label="Local authorities" id="local-authorities" %}
+                <dl class="text-muted fs-8 column-explanations">
+                    <dt>cty_name</dt>
+                    <dd>County Council name</dd>
+                    <dt>cty_gss</dt>
+                    <dd>County Council GSS code</dd>
+                    <dt>dis_name</dt>
+                    <dd>District Council name</dd>
+                    <dt>dis_gss</dt>
+                    <dd>District Council GSS code</dd>
+                    <dt>lbo_name</dt>
+                    <dd>London Borough name</dd>
+                    <dt>lbo_gss</dt>
+                    <dd>London Borough GSS code</dd>
+                    <dt>mtd_name</dt>
+                    <dd>Metropolitan District name</dd>
+                    <dt>mtd_gss</dt>
+                    <dd>Metropolitan District GSS code</dd>
+                    <dt>lgd_name</dt>
+                    <dd>Northern Irish Council name</dd>
+                    <dt>lgd_gss</dt>
+                    <dd>Northern Irish Council GSS code</dd>
+                    <dt>uta_name</dt>
+                    <dd>Unitary Authority name</dd>
+                    <dt>uta_gss</dt>
+                    <dd>Unitary Authority GSS code</dd>
+                </dl>
+            </div>
+            <div class="form-check mb-2">
+                {% include form-check-inner.html label="Parliamentary constituencies" id="parliamentary-constituencies" %}
+                <dl class="text-muted fs-8 column-explanations">
+                    <dt>nie_name</dt>
+                    <dd>NI Assembly constituency name</dd>
+                    <dt>nie_oid</dt>
+                    <dd>NI Assembly constituency OSNI OID</dd>
+                    <dt>spc_name</dt>
+                    <dd>Scottish Parliament constituency name</dd>
+                    <dt>spc_gss</dt>
+                    <dd>Scottish Parliament constituency GSS code</dd>
+                    <dt>wac_name</dt>
+                    <dd>Welsh Assembly constituency name</dd>
+                    <dt>wac_gss</dt>
+                    <dd>Welsh Assembly constituency GSS code</dd>
+                    <dt>wmc_name</dt>
+                    <dd>UK Parliament constituency name</dd>
+                    <dt>wmc_gss</dt>
+                    <dd>UK Parliament constituency GSS code</dd>
+                </dl>
+            </div>
+        </fieldset>
+        <div class="d-flex">
+            <button class="js-start btn btn-success flex-grow-1 me-3">Start</button>
+            <button class="js-stop btn btn-danger flex-grow-1" disabled>Stop</button>
+        </div>
+    </div>
+
     <div class="geocodeit__input">
         <textarea class="js-input"></textarea>
     </div>
 
     <div class="geocodeit__activity">
-        <label for="apikey">MapIt API Key</label>
-        <input type="text" class="js-apikey geocodeit__activity__apikey" id="apikey">
-        <button class="js-start geocodeit__activity__start">Start</button>
-        <button class="js-stop geocodeit__activity__stop">Stop</button>
         <progress class="js-progress geocodeit__activity__progress" value="0"></progress>
     </div>
 
     <div class="geocodeit__output">
-        <textarea class="js-output" readonly="readonly"></textarea>
+        <textarea class="js-output-textarea" readonly="readonly"></textarea>
+        <table class="js-output-table table table-sm" style="display: none;"></table>
     </div>
 
 </main>

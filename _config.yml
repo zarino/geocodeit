@@ -2,7 +2,25 @@ title: geocodeit
 description: >
   Simple web frontend for geocoding UK postcodes using
   mySociety’s MapIt service (mapit.mysociety.org)
+url: "https://zarino.github.io"
 baseurl: "/geocodeit"
-
-markdown: kramdown
 host: 0.0.0.0
+
+exclude:
+  - .browserlistrc
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - node_modules/
+  - README.md
+  - script/
+  - ssl/
+  - vendor/
+
+sass:
+  sourcemap: never
+  load_paths:
+    - static/vendor/

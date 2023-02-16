@@ -360,3 +360,6 @@ $('.js-start').on('click', function(){
 $('.js-stop').on('click', function(){
     geocodeit.stop();
 });
+
+// Clear ajax cache on pageload, in case source data has updated.
+window.localStorage.removeItem('ajaxCache');
